@@ -38,5 +38,32 @@ namespace NWRestApi2022k.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult Remove(string id)
+        {
+            var customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return NotFound("Asiakasta id:llä " + id + " ei löytynyt");
+            }
+            else
+            {
+                try
+                {
+                    db.Customers.Remove(customer);
+                    db.SaveChanges();
+
+                    return Ok("Poistettiin asiakas " + customer.CompanyName);
+                }
+                catch (Exception e)
+                {
+                    return BadRequest("Poisto ei onnistunut. Ongelma saattaa johtua siitä, jos asiakkaalla on tilauksia?");
+                }
+            }  
+        }
+
+
+
     }
 }
