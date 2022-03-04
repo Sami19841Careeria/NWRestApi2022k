@@ -117,16 +117,24 @@ namespace NWRestApi2022k.Controllers
         }
 
       
-        // Get Customers by country parameter localhost:5001/nw/customers/country/finland
+        // Get Customers by country parameter localhost:xxxxxx/api/customers/country/finland
         [HttpGet]
         [Route("country/{maa}")]
         public ActionResult GetSomeCustomers(string maa)
         {
-            var someCustomers = (from c in db.Customers
+            /*var cust = (from c in db.Customers
                                 where c.Country == maa
                                 select c).ToList();
+            */
 
-            return Ok(someCustomers);
+            // Sama kuin yllä, mutta lambda tyylillä:
+            //var cust = db.Customers.Where(c => c.Country.ToLower() == maa.ToLower());
+
+            // Tässä riittää että tiedetään maan nimen osa
+            var cust = db.Customers.Where(c => c.Country.ToLower().Contains(maa.ToLower()));
+
+
+            return Ok(cust);
         }
 
     }
