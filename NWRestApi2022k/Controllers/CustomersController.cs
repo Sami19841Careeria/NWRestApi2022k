@@ -88,7 +88,7 @@ namespace NWRestApi2022k.Controllers
 
             try
             {
-                Customer customer = db.Customers.Find(id);
+                var customer = db.Customers.Find(id);
                 if (customer != null)
                 {
                     customer.CompanyName = asiakas.CompanyName;
@@ -102,7 +102,7 @@ namespace NWRestApi2022k.Controllers
                     customer.Fax = asiakas.Fax;
 
                     db.SaveChanges();
-                    return Ok(customer.CustomerId);
+                    return Ok("Muokattu asiakasta: " + customer.CompanyName);
                 }
                 else
                 {
@@ -116,7 +116,18 @@ namespace NWRestApi2022k.Controllers
            
         }
 
+      
+        // Get Customers by country parameter localhost:5001/nw/customers/country/finland
+        [HttpGet]
+        [Route("country/{maa}")]
+        public ActionResult GetSomeCustomers(string maa)
+        {
+            var someCustomers = (from c in db.Customers
+                                where c.Country == maa
+                                select c).ToList();
 
+            return Ok(someCustomers);
+        }
 
     }
 }
