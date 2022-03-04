@@ -15,6 +15,7 @@ namespace NWRestApi2022k.Controllers
         {
             var customers = db.Customers;
             return Ok(customers);
+          
         }
 
         // Get 1 customer by id
@@ -61,6 +62,58 @@ namespace NWRestApi2022k.Controllers
                     return BadRequest("Poisto ei onnistunut. Ongelma saattaa johtua siitä, jos asiakkaalla on tilauksia?");
                 }
             }  
+        }
+
+        // Uuden lisääminen
+        [HttpPost]
+        public ActionResult PostCreateNew([FromBody] Customer asiakas)
+        {
+            try
+            {
+                db.Customers.Add(asiakas);
+                db.SaveChanges();
+                return Ok("Lisättiin asiakas " + asiakas.CompanyName);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Asiakkaan lisääminen ei onnistunut. Tässä lisätietoa: " + e);
+            }
+        }
+
+        //Muokkaus
+        [HttpPut]
+        [Route("{id}")]
+        public ActionResult PutEdit(string id, [FromBody] Customer asiakas)
+        {
+
+            try
+            {
+                Customer customer = db.Customers.Find(id);
+                if (customer != null)
+                {
+                    customer.CompanyName = asiakas.CompanyName;
+                    customer.ContactName = asiakas.ContactName;
+                    customer.ContactTitle = asiakas.ContactTitle;
+                    customer.Country = asiakas.Country;
+                    customer.Address = asiakas.Address;
+                    customer.City = asiakas.City;
+                    customer.PostalCode = asiakas.PostalCode;
+                    customer.Phone = asiakas.Phone;
+                    customer.Fax = asiakas.Fax;
+
+                    db.SaveChanges();
+                    return Ok(customer.CustomerId);
+                }
+                else
+                {
+                    return NotFound("Päivitettävää asiakasta ei löytynyt!");
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Jokin meni pieleen asiakasta päivitettäessä. Alla lisätietoa" + e);
+            }
+           
         }
 
 
