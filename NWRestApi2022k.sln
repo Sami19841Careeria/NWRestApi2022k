@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWRestApi2022k", "NWRestApi2022k\NWRestApi2022k.csproj", "{EB2046D8-DB45-42DF-9DDA-B6686F8B9FC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB2046D8-DB45-42DF-9DDA-B6686F8B9FC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB2046D8-DB45-42DF-9DDA-B6686F8B9FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB2046D8-DB45-42DF-9DDA-B6686F8B9FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB2046D8-DB45-42DF-9DDA-B6686F8B9FC8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9D5D4CF-6DF1-4E29-9D10-DB525D848329}
+	EndGlobalSection
+EndGlobal
