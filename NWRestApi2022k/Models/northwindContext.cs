@@ -44,6 +44,7 @@ namespace NWRestApi2022k.Models
         public virtual DbSet<SummaryOfSalesByYear> SummaryOfSalesByYears { get; set; } = null!;
         public virtual DbSet<Supplier> Suppliers { get; set; } = null!;
         public virtual DbSet<Territory> Territories { get; set; } = null!;
+        public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<VMaxiLakka> VMaxiLakkas { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -767,6 +768,19 @@ namespace NWRestApi2022k.Models
                     .HasForeignKey(d => d.RegionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Territories_Region");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Email).HasMaxLength(30);
+
+                entity.Property(e => e.Firstname).HasMaxLength(30);
+
+                entity.Property(e => e.Lastname).HasMaxLength(30);
+
+                entity.Property(e => e.Password).HasMaxLength(200);
+
+                entity.Property(e => e.Username).HasMaxLength(10);
             });
 
             modelBuilder.Entity<VMaxiLakka>(entity =>
