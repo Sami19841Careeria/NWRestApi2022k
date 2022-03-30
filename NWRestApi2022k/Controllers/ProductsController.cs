@@ -28,6 +28,7 @@ namespace NWRestApi2022k.Controllers
         }
 
 
+        // Haku categorian nimellä. esim. https://localhost:44327/api/Products/cname/seafood
         [HttpGet]
         [Route("cname/{cname}")]
         public ActionResult GetByCategoryName(string cname)
@@ -39,7 +40,14 @@ namespace NWRestApi2022k.Controllers
             return Ok(products);
         }
 
-
+        // Haku hinnan mukaan
+        [HttpGet]
+        [Route("min-price/{min}/max-price/{max}")]
+        public ActionResult GetByPrice(int min, int max)
+        {
+            var p = db.Products.Where(p => p.UnitPrice >= min && p.UnitPrice <= max);
+            return Ok(p);
+        }
 
 
 
