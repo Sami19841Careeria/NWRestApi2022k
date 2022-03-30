@@ -24,6 +24,7 @@ namespace NWRestApi2022k.Models
         public virtual DbSet<Customer> Customers { get; set; } = null!;
         public virtual DbSet<CustomerAndSuppliersByCity> CustomerAndSuppliersByCities { get; set; } = null!;
         public virtual DbSet<CustomerDemographic> CustomerDemographics { get; set; } = null!;
+        public virtual DbSet<Documentation> Documentations { get; set; } = null!;
         public virtual DbSet<Employee> Employees { get; set; } = null!;
         public virtual DbSet<Invoice> Invoices { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
@@ -44,6 +45,7 @@ namespace NWRestApi2022k.Models
         public virtual DbSet<SummaryOfSalesByYear> SummaryOfSalesByYears { get; set; } = null!;
         public virtual DbSet<Supplier> Suppliers { get; set; } = null!;
         public virtual DbSet<Territory> Territories { get; set; } = null!;
+        public virtual DbSet<Tilaussummat> Tilaussummats { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<VMaxiLakka> VMaxiLakkas { get; set; } = null!;
 
@@ -234,6 +236,31 @@ namespace NWRestApi2022k.Models
                     .IsFixedLength();
 
                 entity.Property(e => e.CustomerDesc).HasColumnType("ntext");
+            });
+
+            modelBuilder.Entity<Documentation>(entity =>
+            {
+                entity.ToTable("Documentation");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Description)
+                    .HasMaxLength(200)
+                    .HasColumnName("description");
+
+                entity.Property(e => e.Keycode)
+                    .HasMaxLength(10)
+                    .HasColumnName("keycode");
+
+                entity.Property(e => e.Method)
+                    .HasMaxLength(10)
+                    .HasColumnName("method")
+                    .IsFixedLength();
+
+                entity.Property(e => e.Url)
+                    .HasMaxLength(100)
+                    .HasColumnName("url")
+                    .IsFixedLength();
             });
 
             modelBuilder.Entity<Employee>(entity =>
@@ -768,6 +795,17 @@ namespace NWRestApi2022k.Models
                     .HasForeignKey(d => d.RegionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Territories_Region");
+            });
+
+            modelBuilder.Entity<Tilaussummat>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("Tilaussummat");
+
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
+
+                entity.Property(e => e.Summa).HasColumnType("money");
             });
 
             modelBuilder.Entity<User>(entity =>
