@@ -18,6 +18,31 @@ namespace NWRestApi2022k.Controllers
             return Ok(p);
         }
 
+
+        [HttpGet]
+        [Route("catid/{cid}")]
+        public ActionResult GetByCatId(int cid)
+        {
+            var p = db.Products.Where(p => p.CategoryId == cid);
+            return Ok(p);
+        }
+
+
+        [HttpGet]
+        [Route("cname/{cname}")]
+        public ActionResult GetByCategoryName(string cname)
+        {
+           
+            var products = (from p in db.Products join c in db.Categories on p.CategoryId equals c.CategoryId where c.CategoryName == cname
+                    select p).ToList(); 
+
+            return Ok(products);
+        }
+
+
+
+
+
         // Uuden lisääminen
         [HttpPost]
         public ActionResult PostCreateNew([FromBody] Product prod)
