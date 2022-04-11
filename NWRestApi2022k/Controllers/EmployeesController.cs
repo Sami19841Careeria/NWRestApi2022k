@@ -9,7 +9,7 @@ namespace NWRestApi2022k.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private static readonly northwindContext db = new northwindContext();
+        private readonly northwindContext db = new northwindContext();
 
         [HttpGet]
         public ActionResult GetAll()

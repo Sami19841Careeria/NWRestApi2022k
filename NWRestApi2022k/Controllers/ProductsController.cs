@@ -9,7 +9,7 @@ namespace NWRestApi2022k.Controllers
     public class ProductsController : ControllerBase
     {
 
-        private static readonly northwindContext db = new northwindContext();
+        private readonly northwindContext db = new northwindContext();
         
         [HttpGet]
         public List<Product> GetAll()
