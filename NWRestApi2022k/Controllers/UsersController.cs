@@ -29,6 +29,7 @@ namespace NWRestApi2022k.Controllers
         {
             try
             {
+               
                 db.Users.Add(u);
                 db.SaveChanges();
                 return Ok("Lisättiin käyttäjä " + u.Username);

@@ -10,13 +10,41 @@ namespace NWRestApi2022k.Controllers
     {
 
         private static readonly northwindContext db = new northwindContext();
-
+        
         [HttpGet]
-        public ActionResult GetAll()
+        public List<Product> GetAll()
         {
             var p = db.Products;
-            return Ok(p);
+            return p.ToList();
         }
+        
+
+        [HttpGet]
+        [Route("special/{productName}")]
+        public ActionResult GetSpecialData(string productName)
+        {
+
+                            var prod = (from p in db.Products
+                                        where p.ProductName.ToLower().Contains(productName.ToLower()) select p).FirstOrDefault();
+
+                            var cat = (from c in db.Categories where c.CategoryId == prod.CategoryId select c).FirstOrDefault();
+
+                            var sup = (from s in db.Suppliers where s.SupplierId == prod.SupplierId select s).FirstOrDefault();
+
+                            List<ProductData> pdata = new List<ProductData>()
+                             {
+                                new ProductData
+                                    {
+                                            Id = prod.ProductId,
+                                            ProductName = prod.ProductName,
+                                            SupplierName = sup.CompanyName,
+                                            CategoryName = cat.CategoryName,
+                                    }
+                             };
+
+            return Ok(pdata);
+        }
+
 
 
         [HttpGet]
@@ -40,10 +68,11 @@ namespace NWRestApi2022k.Controllers
             return Ok(products);
         }
 
+
         // Haku hinnan mukaan
         [HttpGet]
         [Route("min-price/{min}/max-price/{max}")]
-        public ActionResult GetByPrice(int min, int max)
+        public ActionResult GetByPrice(decimal min, decimal max)
         {
             var p = db.Products.Where(p => p.UnitPrice >= min && p.UnitPrice <= max);
             return Ok(p);
@@ -59,7 +88,9 @@ namespace NWRestApi2022k.Controllers
             {
                 db.Products.Add(prod);
                 db.SaveChanges();
+                
                 return Ok("Lisättiin tuote " + prod.ProductName);
+
             }
             catch (Exception e)
             {

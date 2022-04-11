@@ -72,7 +72,9 @@ namespace NWRestApi2022k.Controllers
             {
                 db.Customers.Add(asiakas);
                 db.SaveChanges();
-                return Ok("Lisättiin asiakas " + asiakas.CompanyName);
+                //return Created(".../api/customers", asiakas); <-- yksi tapa tämäkin
+                return Ok($"Luotiin {asiakas.CompanyName}");
+
             }
             catch (Exception e)
             {
@@ -86,9 +88,15 @@ namespace NWRestApi2022k.Controllers
         public ActionResult PutEdit(string id, [FromBody] Customer asiakas)
         {
 
+            if (asiakas == null)
+            {
+                return BadRequest("Asiakas puuttuu pyynnön bodysta");
+            }
+
             try
             {
                 var customer = db.Customers.Find(id);
+
                 if (customer != null)
                 {
                     customer.CompanyName = asiakas.CompanyName;
@@ -122,16 +130,37 @@ namespace NWRestApi2022k.Controllers
         [Route("country/{maa}")]
         public ActionResult GetSomeCustomers(string maa)
         {
-            /*var cust = (from c in db.Customers
-                                where c.Country == maa
+           /* var cust = (from c in db.Customers
+                                where c.Country.ToLower() == maa.ToLower()
                                 select c).ToList();
             */
 
             // Sama kuin yllä, mutta lambda tyylillä:
             //var cust = db.Customers.Where(c => c.Country.ToLower() == maa.ToLower());
 
-            // Tässä riittää että tiedetään maan nimen osa
+            //Tässä riittää että tiedetään maan nimen osa
             var cust = db.Customers.Where(c => c.Country.ToLower().Contains(maa.ToLower()));
+
+
+            return Ok(cust);
+        }
+
+        // Get Customers by country and city parameter localhost:xxxxxx/api/customers/country/finland/city/
+        [HttpGet]
+        [Route("country/{maa}/city/{city}")]
+        public ActionResult GetByCountryAndCity(string maa, string city)
+        {
+            /* var cust = (from c in db.Customers
+                                 where c.Country.ToLower() == maa.ToLower()
+                                 select c).ToList();
+             */
+
+            // Sama kuin yllä, mutta lambda tyylillä:
+            //var cust = db.Customers.Where(c => c.Country.ToLower() == maa.ToLower());
+
+            //Tässä riittää että tiedetään maan nimen osa
+            var cust = db.Customers.Where(c => c.Country.ToLower().Contains(maa.ToLower()) &&
+            c.City.ToLower().Contains(city.ToLower()));
 
 
             return Ok(cust);

@@ -23,8 +23,8 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      //"launchUrl": "api/customers",
-      "launchUrl": "swagger",
+      // "launchUrl": "api/customers",
+     "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
