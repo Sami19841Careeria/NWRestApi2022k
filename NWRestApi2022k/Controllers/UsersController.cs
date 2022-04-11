@@ -8,12 +8,13 @@ namespace NWRestApi2022k.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private static readonly northwindContext db = new northwindContext();
+        private readonly northwindContext db = new northwindContext();
 
         [HttpGet]
         public ActionResult GetAll()
         {
             var users = db.Users;
+
 
             foreach (var user in users)
             {
