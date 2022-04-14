@@ -4,6 +4,6 @@ namespace NWRestApi2022k.Services.Interfaces
 {
     public interface IAuthenticateService
     {
-        User Authenticate(string username, string password);
+        LoggedUser Authenticate(string username, string password);
     }
 }

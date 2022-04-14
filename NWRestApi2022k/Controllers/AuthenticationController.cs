@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NWRestApi2022k.Services.Interfaces;
+using NWRestApi2022k.Models;
 
 namespace NWRestApi2022k.Controllers
 {
@@ -16,14 +17,14 @@ namespace NWRestApi2022k.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Models.User model)
+        public ActionResult Post([FromBody] Credentials tunnukset)
         {
-            var user = _authenticateService.Authenticate(model.Username, model.Password);
+            var loggedUser = _authenticateService.Authenticate(tunnukset.Username, tunnukset.Password);
 
-            if (user == null)
+            if (loggedUser == null)
                 return BadRequest(new { message = "Käyttäjätunus tai salasana on virheellinen" });
 
-            return Ok(user); // Palautus front endiin
+            return Ok(loggedUser); // Palautus front endiin (sis. vain loggedUser luokan mukaiset kentät)
         }
     }
 }
