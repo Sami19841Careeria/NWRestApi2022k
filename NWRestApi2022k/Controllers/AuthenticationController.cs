@@ -16,6 +16,7 @@ namespace NWRestApi2022k.Controllers
             _authenticateService = authenticateService;
         }
 
+        // Tähän tulee Front endin kirjautumisyritys
         [HttpPost]
         public ActionResult Post([FromBody] Credentials tunnukset)
         {

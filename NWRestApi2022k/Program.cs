@@ -2,6 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,10 +28,20 @@ builder.Services.AddCors(options =>
     .AllowAnyHeader());
 });
 
+// ------Connection string luetaan app setting.json tiedostosta--------------
+
+builder.Services.AddDbContext<northwindContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("paikallinen")
+    ));
+
+
+
 // ------------- tuodaan appSettings.jsoniin tekem‰mme AppSettings m‰‰ritys ------------
 
 var appSettingsSection = builder.Configuration.GetSection("AppSettings");
 builder.Services.Configure<AppSettings>(appSettingsSection);
+
+
 
 
 // ------------- JWT Autentikaatio ---------------------------------------------------------------

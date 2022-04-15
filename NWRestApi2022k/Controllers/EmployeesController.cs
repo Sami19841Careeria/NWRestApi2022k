@@ -9,7 +9,14 @@ namespace NWRestApi2022k.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly northwindContext db = new northwindContext();
+        //private readonly northwindContext db = new northwindContext();
+
+        private readonly northwindContext db;
+
+        public EmployeesController(northwindContext dbparam)
+        {
+            db = dbparam;
+        }
 
         [HttpGet]
         public ActionResult GetAll()
@@ -18,7 +25,7 @@ namespace NWRestApi2022k.Controllers
             return Ok(employees);
         }
 
-
+        /*
         [HttpGet]
         [Route("{id}")]
         public ActionResult GetOneEmployee(int id)
@@ -152,7 +159,7 @@ namespace NWRestApi2022k.Controllers
             }
 
         }
-
+        */
       
     }
 }
