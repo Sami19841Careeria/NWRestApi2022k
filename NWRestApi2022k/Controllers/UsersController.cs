@@ -8,7 +8,15 @@ namespace NWRestApi2022k.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly northwindContext db = new northwindContext();
+        // private readonly northwindContext db = new northwindContext();
+
+        // Dependency Injection tyyli
+        private readonly northwindContext db;
+
+        public UsersController(northwindContext dbparam)
+        {
+            db = dbparam;
+        }
 
         [HttpGet]
         public ActionResult GetAll()

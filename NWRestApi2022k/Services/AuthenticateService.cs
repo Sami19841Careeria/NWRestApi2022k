@@ -13,14 +13,17 @@ namespace NWRestApi2022k.Services
 {
     public class AuthenticateService : IAuthenticateService
     {
+
+        private readonly northwindContext db;
+
         private readonly AppSettings _appSettings;
-        public AuthenticateService(IOptions<AppSettings> appSettings)
+        public AuthenticateService(IOptions<AppSettings> appSettings, northwindContext nwc)
         {
             _appSettings = appSettings.Value;
+            db = nwc;
         }
 
-        private northwindContext db = new northwindContext();
-
+       
         //Metodin paluutyyppi on LoggedUser luokan mukainen olio
         public LoggedUser? Authenticate(string username, string password)
         {

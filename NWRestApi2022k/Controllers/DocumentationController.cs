@@ -8,7 +8,15 @@ namespace NWRestApi2022k.Controllers
     [ApiController]
     public class DocumentationController : ControllerBase
     {
-        private static readonly northwindContext db = new northwindContext();
+        // private readonly northwindContext db = new northwindContext();
+
+        // Dependency Injection tyyli
+        private readonly northwindContext db;
+
+        public DocumentationController(northwindContext dbparam)
+        {
+            db = dbparam;
+        }
 
         [HttpGet]
         [Route("{keycode}")]

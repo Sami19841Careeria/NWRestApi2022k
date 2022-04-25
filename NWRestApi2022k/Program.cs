@@ -28,7 +28,7 @@ builder.Services.AddCors(options =>
     .AllowAnyHeader());
 });
 
-// ------Connection string luetaan app setting.json tiedostosta--------------
+// ------Connection string luetaan app settings.json tiedostosta--------------
 
 builder.Services.AddDbContext<northwindContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("paikallinen")
