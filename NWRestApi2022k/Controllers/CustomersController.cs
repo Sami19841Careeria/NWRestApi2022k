@@ -7,12 +7,12 @@ using NWRestApi2022k.Models;
 namespace NWRestApi2022k.Controllers
 {
 
-   // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        //private readonly northwindContext db = new northwindContext();
+       // private readonly northwindContext db = new northwindContext();
 
         // Dependency Injection tyyli
         private readonly northwindContext db;
