@@ -68,7 +68,7 @@ namespace NWRestApi2022k.Controllers
                     db.Customers.Remove(customer);
                     db.SaveChanges();
 
-                    return Ok("Poistettiin asiakas " + customer.CompanyName);
+                    return Ok("Removed customer " + customer.CompanyName);
                 }
                 catch (Exception e)
                 {

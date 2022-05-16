@@ -11,21 +11,32 @@ namespace NWRestApi2022k.Controllers
 
         //private readonly northwindContext db = new northwindContext();
 
-        // Dependency Injection tyyli
+        //Dependency Injection toteutustapa
         private readonly northwindContext db;
 
         public ProductsController(northwindContext dbparam)
         {
             db = dbparam;
         }
-
+        
+        /*
         [HttpGet]
         public List<Product> GetAll()
         {
             var p = db.Products;
             return p.ToList();
         }
-        
+        */
+
+        [HttpGet]
+        public ActionResult GetAllz()
+        {
+            var p = db.Products;
+
+            return Ok(p.ToList());
+            
+        }
+
 
         [HttpGet]
         [Route("special/{productName}")]
