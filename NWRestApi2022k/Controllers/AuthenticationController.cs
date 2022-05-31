@@ -18,9 +18,9 @@ namespace NWRestApi2022k.Controllers
 
         // Tähän tulee Front endin kirjautumisyritys
         [HttpPost]
-        public ActionResult Post([FromBody] Credentials tunnukset)
+        public ActionResult Post([FromBody] Credentials tunnukse)
         {
-            var loggedUser = _authenticateService.Authenticate(tunnukset.Username, tunnukset.Password);
+            var loggedUser = _authenticateService.Authenticate(tunnukse.Username, tunnukse.Password);
 
             if (loggedUser == null)
                 return BadRequest(new { message = "Käyttäjätunus tai salasana on virheellinen" });
