@@ -20,7 +20,7 @@ namespace NWRestApi2022k.Models
         public short? UnitsOnOrder { get; set; }
         public short? ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
-        public string? Rpaprocessed { get; set; }
+        //public string? Rpaprocessed { get; set; }
 
         public virtual Category? Category { get; set; }
         public virtual Supplier? Supplier { get; set; }

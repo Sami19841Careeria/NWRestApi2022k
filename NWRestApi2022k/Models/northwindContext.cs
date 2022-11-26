@@ -54,7 +54,7 @@ namespace NWRestApi2022k.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                return;
+                optionsBuilder.UseSqlServer("Server=secret;");
             }
         }
 
@@ -583,9 +583,9 @@ namespace NWRestApi2022k.Models
 
                 entity.Property(e => e.ReorderLevel).HasDefaultValueSql("(0)");
 
-                entity.Property(e => e.Rpaprocessed)
-                    .HasMaxLength(50)
-                    .HasColumnName("RPAProcessed");
+                //entity.Property(e => e.Rpaprocessed)
+                //    .HasMaxLength(50)
+                //    .HasColumnName("RPAProcessed");
 
                 entity.Property(e => e.SupplierId).HasColumnName("SupplierID");
 

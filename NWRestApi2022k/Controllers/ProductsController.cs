@@ -18,15 +18,15 @@ namespace NWRestApi2022k.Controllers
         {
             db = dbparam;
         }
-        
-        /*
-        [HttpGet]
-        public List<Product> GetAll()
-        {
-            var p = db.Products;
-            return p.ToList();
-        }
-        */
+
+
+        //[HttpGet]
+        //public List<Product> GetAll()
+        //{
+        //    var p = db.Products;
+        //    return p.ToList();
+        //}
+
 
         [HttpGet]
         public ActionResult GetAllz()
@@ -34,7 +34,7 @@ namespace NWRestApi2022k.Controllers
             var p = db.Products;
 
             return Ok(p.ToList());
-            
+
         }
 
 
