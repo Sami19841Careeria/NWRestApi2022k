@@ -11,6 +11,7 @@ using NWRestApi2022k.Models;
 using NWRestApi2022k.Services;
 using NWRestApi2022k.Services.Interfaces;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -89,3 +90,4 @@ app.UseCors("salliKaikki");
 app.MapControllers();
 
 app.Run();
+

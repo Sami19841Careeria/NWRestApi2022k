@@ -117,7 +117,30 @@ namespace NWRestApi2022k.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult Remove(int id)
+        {
+            var product = db.Products.Find(id);
+            if (product == null)
+            {
+                return NotFound("Tuotetta id:llä " + id + " ei löytynyt");
+            }
+            else
+            {
+                try
+                {
+                    db.Products.Remove(product);
+                    db.SaveChanges();
 
+                    return Ok("Removed product " + product.ProductName);
+                }
+                catch (Exception e)
+                {
+                    return BadRequest("Poisto ei onnistunut.");
+                }
+            }
+        }
 
 
     }
