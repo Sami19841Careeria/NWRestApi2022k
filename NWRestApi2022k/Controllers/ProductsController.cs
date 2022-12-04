@@ -144,7 +144,7 @@ namespace NWRestApi2022k.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public ActionResult PutEdit(int id, [FromBody] Product tuote)
+        public ActionResult PutEdit(int id, Product tuote)
         {
 
             if (tuote == null)
