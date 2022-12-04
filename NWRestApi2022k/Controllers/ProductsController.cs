@@ -142,7 +142,7 @@ namespace NWRestApi2022k.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPatch]
         [Route("{id}")]
         public ActionResult PutEdit(int id, [FromForm] Product tuote)
         {
