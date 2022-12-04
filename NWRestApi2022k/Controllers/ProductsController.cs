@@ -142,6 +142,42 @@ namespace NWRestApi2022k.Controllers
             }
         }
 
+        [HttpPut]
+        [Route("{id}")]
+        public ActionResult PutEdit(int id, [FromBody] Product tuote)
+        {
 
+            if (tuote == null)
+            {
+                return BadRequest("Tuote puuttuu listalta.");
+            }
+
+            try
+            {
+                var product = db.Products.Find(id);
+
+                if (product != null)
+                {
+                    product.ProductName = tuote.ProductName;
+                    product.SupplierId = tuote.SupplierId;
+                    product.CategoryId = tuote.CategoryId;
+                    product.QuantityPerUnit = tuote.QuantityPerUnit;
+                    product.UnitPrice = tuote.UnitPrice;
+                    product.UnitsInStock = tuote.UnitsInStock;
+                    
+                    db.SaveChanges();
+                    return Ok("Muokattu tuotetta: " + tuote.ProductName);
+                }
+                else
+                {
+                    return NotFound("Päivitettävää tuotetta ei löytynyt!");
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Jokin meni pieleen tuotetta päivitettäessä. Alla lisätietoa" + e);
+            }
+
+        }
     }
 }
