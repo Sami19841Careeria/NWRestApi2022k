@@ -159,8 +159,8 @@ namespace NWRestApi2022k.Controllers
                 if (product != null)
                 {
                     product.ProductName = tuote.ProductName;
-                    product.SupplierId = tuote.SupplierId;
-                    product.CategoryId = tuote.CategoryId;
+                    //product.SupplierId = tuote.SupplierId;
+                    //product.CategoryId = tuote.CategoryId;
                     product.QuantityPerUnit = tuote.QuantityPerUnit;
                     product.UnitPrice = tuote.UnitPrice;
                     product.UnitsInStock = tuote.UnitsInStock;
