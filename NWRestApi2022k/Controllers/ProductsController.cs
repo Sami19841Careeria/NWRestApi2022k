@@ -143,8 +143,8 @@ namespace NWRestApi2022k.Controllers
         }
 
         [HttpPut]
-        [Route("{name}")]
-        public ActionResult PutEdit(string name, [FromBody] Product tuote)
+        [Route("{id}")]
+        public ActionResult PutEdit(int id, [FromForm] Product tuote)
         {
 
             if (tuote == null)
@@ -154,7 +154,7 @@ namespace NWRestApi2022k.Controllers
 
             try
             {
-                var product = db.Products.Find(name);
+                var product = db.Products.Find(id);
 
                 if (product != null)
                 {
