@@ -22,8 +22,8 @@ namespace NWRestApi2022k.Models
         public bool Discontinued { get; set; }
         //public string? Rpaprocessed { get; set; }
 
-        public virtual Category Category { get; set; }
-        public virtual Supplier Supplier { get; set; }
+        public virtual Category? Category { get; set; }
+        public virtual Supplier? Supplier { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
