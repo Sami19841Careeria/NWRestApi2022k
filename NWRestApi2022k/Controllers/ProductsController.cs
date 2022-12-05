@@ -155,21 +155,23 @@ namespace NWRestApi2022k.Controllers
             try
             {
                 var product = db.Products.Find(key);
+                var supplier = db.Suppliers.Find(key);
+                var category = db.Categories.Find(key);
 
                 if (product != null)
                 {
                     product.ProductId = tuote.ProductId;
                     product.ProductName = tuote.ProductName;
-                    product.SupplierId = tuote.SupplierId;
-                    product.CategoryId = tuote.CategoryId;
+                    //product.SupplierId = tuote.SupplierId;
+                    //product.CategoryId = tuote.CategoryId;
                     product.QuantityPerUnit = tuote.QuantityPerUnit;
                     product.UnitPrice = tuote.UnitPrice;
                     product.UnitsInStock = tuote.UnitsInStock;
                     product.Discontinued = tuote.Discontinued;
                     product.Supplier = tuote.Supplier;
                     product.Category = tuote.Category;
-                    product.Supplier.SupplierId = tuote.Supplier.SupplierId;
-                    product.Category.CategoryId = tuote.Category.CategoryId;
+                    supplier.SupplierId = tuote.SupplierId;
+                    category.CategoryId = tuote.CategoryId;
 
                     db.SaveChanges();
                     return Ok("Muokattu tuotetta: " + tuote.ProductName);
