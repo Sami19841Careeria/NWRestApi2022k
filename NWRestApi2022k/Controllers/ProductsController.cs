@@ -144,7 +144,7 @@ namespace NWRestApi2022k.Controllers
 
         [HttpPut]
         [Route("{key}")]
-        public ActionResult PutEdit(string key, [FromForm] Product tuote)
+        public ActionResult PutEdit(int key, [FromForm] Product tuote)
         {
 
             if (tuote == null)
@@ -159,8 +159,8 @@ namespace NWRestApi2022k.Controllers
                 if (product != null)
                 {
                     product.ProductName = tuote.ProductName;
-                    product.SupplierId = tuote.SupplierId;
-                    product.CategoryId = tuote.CategoryId;
+                    //product.SupplierId = tuote.SupplierId;
+                    //product.CategoryId = tuote.CategoryId;
                     product.QuantityPerUnit = tuote.QuantityPerUnit;
                     product.UnitPrice = tuote.UnitPrice;
                     product.UnitsInStock = tuote.UnitsInStock;
