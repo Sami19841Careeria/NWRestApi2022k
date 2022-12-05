@@ -144,7 +144,7 @@ namespace NWRestApi2022k.Controllers
 
         [HttpPut]
         [Route("{key}")]
-        public ActionResult PutEdit(int key, [FromForm] Product tuote)
+        public ActionResult PutEdit(int key, [FromBody] Product tuote)
         {
 
             if (tuote == null)
@@ -168,7 +168,9 @@ namespace NWRestApi2022k.Controllers
                     product.Discontinued = tuote.Discontinued;
                     product.Supplier = tuote.Supplier;
                     product.Category = tuote.Category;
-                    
+                    product.Supplier.SupplierId = tuote.Supplier.SupplierId;
+                    product.Category.CategoryId = tuote.Category.CategoryId;
+
                     db.SaveChanges();
                     return Ok("Muokattu tuotetta: " + tuote.ProductName);
                 }
