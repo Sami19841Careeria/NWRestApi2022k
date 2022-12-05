@@ -159,11 +159,14 @@ namespace NWRestApi2022k.Controllers
                 if (product != null)
                 {
                     product.ProductName = tuote.ProductName;
-                    //product.SupplierId = tuote.SupplierId;
-                    //product.CategoryId = tuote.CategoryId;
+                    product.SupplierId = tuote.SupplierId;
+                    product.CategoryId = tuote.CategoryId;
                     product.QuantityPerUnit = tuote.QuantityPerUnit;
                     product.UnitPrice = tuote.UnitPrice;
                     product.UnitsInStock = tuote.UnitsInStock;
+                    product.Discontinued = tuote.Discontinued;
+                    product.Supplier = tuote.Supplier;
+                    product.Category = tuote.Category;
                     
                     db.SaveChanges();
                     return Ok("Muokattu tuotetta: " + tuote.ProductName);
