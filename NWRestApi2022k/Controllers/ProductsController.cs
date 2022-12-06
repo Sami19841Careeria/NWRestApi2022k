@@ -167,6 +167,8 @@ namespace NWRestApi2022k.Controllers
                     product.Discontinued = tuote.Discontinued;
                     product.Supplier = tuote.Supplier;
                     product.Category = tuote.Category;
+                    product.Supplier.SupplierId = tuote.Supplier.SupplierId;
+                    product.Category.CategoryId = tuote.Category.CategoryId;
 
                     db.SaveChanges();
                     return Ok("Muokattu tuotetta: " + tuote.ProductName);
