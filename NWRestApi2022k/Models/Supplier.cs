@@ -5,10 +5,10 @@ namespace NWRestApi2022k.Models
 {
     public partial class Supplier
     {
-        public Supplier()
-        {
-            Products = new HashSet<Product>();
-        }
+        //public Supplier()
+        //{
+        //    Products = new HashSet<Product>();
+        //}
 
         public int SupplierId { get; set; }
         public string CompanyName { get; set; } = null!;
@@ -23,6 +23,6 @@ namespace NWRestApi2022k.Models
         public string? Fax { get; set; }
         public string? HomePage { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        //public virtual ICollection<Product> Products { get; set; }
     }
 }

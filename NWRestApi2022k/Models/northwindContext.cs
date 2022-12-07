@@ -478,11 +478,11 @@ namespace NWRestApi2022k.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Order_Details_Orders");
 
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.OrderDetails)
-                    .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Order_Details_Products");
+                //entity.HasOne(d => d.Product)
+                //    .WithMany(p => p.OrderDetails)
+                //    .HasForeignKey(d => d.ProductId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_Order_Details_Products");
             });
 
             modelBuilder.Entity<OrderDetailsExtended>(entity =>
@@ -597,15 +597,15 @@ namespace NWRestApi2022k.Models
 
                 entity.Property(e => e.UnitsOnOrder).HasDefaultValueSql("(0)");
 
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.CategoryId)
-                    .HasConstraintName("FK_Products_Categories");
+                //entity.HasOne(d => d.Category)
+                //    .WithMany(p => p.Products)
+                //    .HasForeignKey(d => d.CategoryId)
+                //    .HasConstraintName("FK_Products_Categories");
 
-                entity.HasOne(d => d.Supplier)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.SupplierId)
-                    .HasConstraintName("FK_Products_Suppliers");
+                //entity.HasOne(d => d.Supplier)
+                //    .WithMany(p => p.Products)
+                //    .HasForeignKey(d => d.SupplierId)
+                //    .HasConstraintName("FK_Products_Suppliers");
             });
 
             modelBuilder.Entity<ProductSalesFor1997>(entity =>
