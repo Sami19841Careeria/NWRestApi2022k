@@ -813,13 +813,13 @@ namespace NWRestApi2022k.Models
             {
                 entity.Property(e => e.Email).HasMaxLength(30);
 
-                entity.Property(e => e.Firstname).HasMaxLength(30);
+                entity.Property(e => e.FirstName).HasMaxLength(30);
 
-                entity.Property(e => e.Lastname).HasMaxLength(30);
+                entity.Property(e => e.LastName).HasMaxLength(30);
 
                 entity.Property(e => e.Password).HasMaxLength(200);
 
-                entity.Property(e => e.Username).HasMaxLength(10);
+                entity.Property(e => e.UserName).HasMaxLength(10);
             });
 
             modelBuilder.Entity<VMaxiLakka>(entity =>
