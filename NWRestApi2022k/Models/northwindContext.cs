@@ -54,7 +54,8 @@ namespace NWRestApi2022k.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=secret;");
+                return;
+                //optionsBuilder.UseSqlServer("Server=secret;");
             }
         }
 

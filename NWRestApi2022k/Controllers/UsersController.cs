@@ -98,7 +98,7 @@ namespace NWRestApi2022k.Controllers
                     user.Email = käyttäjä.Email;
                     
                     db.SaveChanges();
-                    return Ok("Muokattu käyttäjää: " + user.Username);
+                    return Ok("Muokattu käyttäjää: " + käyttäjä.Username);
                 }
                 else
                 {
