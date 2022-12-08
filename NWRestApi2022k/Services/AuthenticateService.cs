@@ -28,7 +28,7 @@ namespace NWRestApi2022k.Services
         public LoggedUser? Authenticate(string username, string password)
         {
 
-            var foundUser = db.Users.SingleOrDefault(x => x.Username == username && x.Password == password);
+            var foundUser = db.Users.SingleOrDefault(x => x.UserName == username && x.Password == password);
 
             // Jos ei käyttäjää löydy palautetaan null
             if (foundUser == null)
@@ -55,7 +55,7 @@ namespace NWRestApi2022k.Services
 
             LoggedUser loggedUser = new LoggedUser();
 
-            loggedUser.Username = foundUser.Username;
+            loggedUser.Username = foundUser.UserName;
             loggedUser.AccesslevelId = foundUser.AccesslevelId;
             loggedUser.Token = tokenHandler.WriteToken(token);
 

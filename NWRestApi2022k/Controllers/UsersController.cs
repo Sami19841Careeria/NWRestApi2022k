@@ -41,7 +41,7 @@ namespace NWRestApi2022k.Controllers
                
                 db.Users.Add(u);
                 db.SaveChanges();
-                return Ok("Lisättiin käyttäjä " + u.Username);
+                return Ok("Lisättiin käyttäjä " + u.UserName);
             }
             catch (Exception e)
             {
@@ -65,7 +65,7 @@ namespace NWRestApi2022k.Controllers
                     db.Users.Remove(user);
                     db.SaveChanges();
 
-                    return Ok("Removed user " + user.Username);
+                    return Ok("Removed user " + user.UserName);
                 }
                 catch (Exception e)
                 {
@@ -91,14 +91,14 @@ namespace NWRestApi2022k.Controllers
 
                 if (user != null)
                 {
-                    user.Username = käyttäjä.Username;
+                    user.UserName = käyttäjä.UserName;
                     user.AccesslevelId = käyttäjä.AccesslevelId;
-                    user.Firstname = käyttäjä.Firstname;
-                    user.Lastname = käyttäjä.Lastname;
+                    user.FirstName = käyttäjä.FirstName;
+                    user.LastName = käyttäjä.LastName;
                     user.Email = käyttäjä.Email;
                     
                     db.SaveChanges();
-                    return Ok("Muokattu käyttäjää: " + käyttäjä.Username);
+                    return Ok("Muokattu käyttäjää: " + käyttäjä.UserName);
                 }
                 else
                 {
