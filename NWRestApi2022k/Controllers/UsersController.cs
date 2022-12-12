@@ -77,7 +77,7 @@ namespace NWRestApi2022k.Controllers
         //Muokkaus
         [HttpPut]
         [Route("{id}")]
-        public ActionResult PutEdit(int id, [FromForm] User käyttäjä)
+        public ActionResult PutEdit(int id, [FromBody] User käyttäjä)
         {
 
             if (käyttäjä == null)
