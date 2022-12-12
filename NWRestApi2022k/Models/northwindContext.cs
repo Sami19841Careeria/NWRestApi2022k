@@ -54,8 +54,8 @@ namespace NWRestApi2022k.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                return;
-                //optionsBuilder.UseSqlServer("Server=secret;");
+                //return;
+                optionsBuilder.UseSqlServer("Server=secret;");
             }
         }
 
@@ -573,8 +573,6 @@ namespace NWRestApi2022k.Models
                 entity.HasIndex(e => e.SupplierId, "SupplierID");
 
                 entity.HasIndex(e => e.SupplierId, "SuppliersProducts");
-
-                entity.Property(e => e.Discontinued).HasColumnName("Discontinued");
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
