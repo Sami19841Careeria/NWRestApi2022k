@@ -180,5 +180,26 @@ namespace NWRestApi2022k.Controllers
             }
 
         }
+        //tämä luo uuden vaikka antaa id:n
+        //[HttpPost]
+        //public ActionResult PostCreateNew([FromBody] Employee tyontekija)
+        //{
+        //    try
+        //    {
+        //        using (var transaction = db.Database.BeginTransaction())
+        //        {
+        //            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Employees ON;");
+        //            db.Employees.Add(tyontekija);
+        //            db.SaveChanges();
+        //            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Employees OFF;");
+        //            transaction.Commit();
+        //            return Ok("Lisättiin asiakas " + tyontekija.FirstName + " " + tyontekija.LastName);
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest("Työntekijän lisääminen ei onnistunut. Tässä lisätietoa: " + e);
+        //    }
+        //}
     }
 }
