@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace NWRestApi2022k.Models
 {
@@ -19,7 +21,9 @@ namespace NWRestApi2022k.Models
         public short? UnitsInStock { get; set; }
         public short? UnitsOnOrder { get; set; }
         public short? ReorderLevel { get; set; }
-        public bool Discontinued { get; set; }
+
+        [JsonConverter(typeof(BooleanConverter))]
+        public bool? Discontinued { get; set; }
         //public string? Rpaprocessed { get; set; }
 
         //public virtual Category? Category { get; set; }
